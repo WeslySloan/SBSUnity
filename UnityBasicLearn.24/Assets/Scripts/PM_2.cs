@@ -54,6 +54,18 @@ namespace UnityBasic.Prototype2
             transform.position = transform.position + Vector3.right * horiontalInput * speed * Time.deltaTime;
         }
 
-        
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.CompareTag("Item"))
+            {
+                // 충돌한 오브젝트가 컴포넌트로 banana갖고 있으면 그 컴포넌트 banana
+                IitemCollectable item = other.GetComponent<IitemCollectable>();
+                item.Interact();
+
+                // 플레이어의 이동속도를 증가시킨다.
+                speed *= 2;
+                Destroy(other.gameObject);
+            }
+        }
     }
 }
