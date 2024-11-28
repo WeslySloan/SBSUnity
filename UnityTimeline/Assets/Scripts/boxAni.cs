@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class boxAni : MonoBehaviour
+public class TestAni : MonoBehaviour
 {
     private Animator animator;
 
+    public string boolName;
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +18,16 @@ public class boxAni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            bool current = animator.GetBool("Square");
-            animator.SetBool("Square", !current);
+            bool current = animator.GetBool(boolName);
+            animator.SetBool(boolName, !current);
         }
     }
 }
+
+public class boxAni : TestAni
+{
+    
+}
+
